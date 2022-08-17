@@ -52,6 +52,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin">Admin</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/writer/dashboard">Writer</a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav mr-2">
                             <li class="nav-item">
@@ -78,10 +81,10 @@
                                 <div class="shadoweffect">
                                     <div class="shadow-desc">
                                         <div class="blog-meta">
-                                            <span class="bg-orange"><a href="#" title="">{{blog.category}}</a></span>
+                                            <span class="bg-orange"><a href="{%url 'searchCategory' blog.category_id %}" title="">{{blog.category}}</a></span>
                                             <h4><a href="{%url 'blogDetail' blog.id%}" title="">{{blog.name}}</a></h4>
                                             <small><a href="#" title="">{{blog.created}}</a></small>
-                                            <small><a href="tech-author.html" title="">by {{blog.writer}}</a></small>
+                                            <small><a href="{% url 'searchWriter' blog.writer%}" title="">by {{blog.writer}}</a></small>
                                             <small><a href="#" title=""><i class="fa fa-eye"></i>{{blog.views | intcomma}}</a></small>
                                         </div><!-- end meta -->
                                     </div><!-- end shadow-desc -->
@@ -177,7 +180,7 @@
                             <div class="link-widget">
                                 <ul>
                                     {% for category in categories %}
-                                    <li><a href="#">{{category.name}}<span>(0)</span></a></li>
+                                    <li><a href="{%url 'searchCategory' category.id %}">{{category.name}}<span>(0)</span></a></li>
                                     {% endfor %}
                                 </ul>
                             </div><!-- end link-widget -->
